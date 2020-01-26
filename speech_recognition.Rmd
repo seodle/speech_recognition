@@ -8,16 +8,49 @@ output:
     theme: united
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+Python version : 3.7.4
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+Install SpeechRecognition library :  in terminal or pip install SpeechRecognition
 
-```{r}
-plot(cars)
+Pour installer pocketsphinx, il faut d'abord télécharger swig : https://netix.dl.sourceforge.net/project/swig/swigwin/swigwin-3.0.12/swigwin-3.0.12.zip   Swing for windows
+
+Mettre le dossier dans sur l'ordinateur et mettre ce dossier dans les variables d'environnement
+
+Ensuite, télécharger C++ Build tools et l'install
+
+https://realpython.com/python-speech-recognition/#how-speech-recognition-works-an-overview
+
+Ensuite faire pip install pocketshpinx
+
+Télécharger le package de langue en francais : https://drive.google.com/file/d/0Bw_EqP-hnaFNN2FlQ21RdnVZSVE/view
+
+C:\Users\Sunny\Anaconda3\Lib\site-packages\speech_recognition\pocketsphinx-data
+
+```{python}
+import speech_recognition as sr
+```
+```{python}
+sr.__version__
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{python}
+r = sr.Recognizer()
+audio_file =  sr.AudioFile('harvard.wav')
+print(audio_file)
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+with audio_file as source:
+  audio =  r.record(source)
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```
+
+```{python}
+r.recognize_sphinx(audio)
+```
+
+
+```{python}
+
+
+
+```
+
